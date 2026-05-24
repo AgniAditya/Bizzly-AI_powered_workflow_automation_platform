@@ -44,5 +44,36 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2"
+  },
+  "build": {
+    "appId": "com.bizzly.app",
+    "productName": "Bizzly",
+
+    "files": [
+      "dist-electron/**/*",
+      "dist-react/**/*"
+    ],
+
+    "extraResources": [
+      {
+        "from": "dist-electron",
+        "to": "dist-electron"
+      }
+    ],
+
+    "win": {
+      "target": ["portable", "msi"]
+    },
+
+    "mac": {
+      "target": "dmg"
+    },
+
+    "linux": {
+      "target": "AppImage",
+      "category": "Utility"
+    },
+
+    "icon": "public/icon.png"
   }
 }

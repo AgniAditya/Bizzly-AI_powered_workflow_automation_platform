@@ -2,7 +2,12 @@
     "appId": "com.bizzly.app",
     "productName": "Bizzly",
     "files": ["dist-electron","dist-react"],
-    "extraResources": ["dist-electron/preload.cjs"],
+    "extraResources": [
+        {
+        "from": "dist-electron",
+        "to": "dist-electron"
+        }
+    ],
     "icon": "public/icon.png",
     "mac": {
         "target": "dmg"
