@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import type { Message } from "../../types/Message"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addMessage } from '../store/features/messageSlice';
 import { SendHorizontal } from 'lucide-react';
+import type { RootState } from '../store/store';
 
 function PromptInput() {
   const [input, setInput] = useState<string>('');
   const dispatch = useDispatch();
+  const messages: Message[] = useSelector((state: RootState) => state.messages.messages);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,6 +23,12 @@ function PromptInput() {
 
     dispatch(addMessage(message)); // Add message to Redux store
     setInput(''); // Clear input after sending
+
+    window.electron.getChatCompletion([...messages, message]).then((response: Message) => {
+      dispatch(addMessage(response)); // Add assistant's response to Redux store
+    }).catch((error) => {
+      console.error("Error getting chat completion:", error);
+    })
   };
 
   return (

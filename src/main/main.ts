@@ -1,8 +1,8 @@
 import path from 'path';
 import { app, BrowserWindow } from 'electron';
 import { isDevMode } from './util.js';
-import { ipcMain } from 'electron';
 import { getPreloadPath } from './pathResolver.js';
+import { registerIpcHandlers } from './ipcHandlers.js';
 
 
 const createWindow = () => {
@@ -24,8 +24,6 @@ const createWindow = () => {
   }
 }
 
-ipcMain.handle('greet', (_, name: string) => {
-  return `Hello, ${name}!`;
-});
+registerIpcHandlers();
 
 app.on('ready', createWindow);

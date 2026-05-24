@@ -1,5 +1,6 @@
 const { contextBridge, ipcRenderer } = require('electron')
+import type { Message } from '../types/Message.js';
 
 contextBridge.exposeInMainWorld('electron', { 
-    greet: (name: string) => ipcRenderer.invoke('greet', name)
+    getChatCompletion: (messages: Message[]) => ipcRenderer.invoke('getChatCompletion', messages)
 })
