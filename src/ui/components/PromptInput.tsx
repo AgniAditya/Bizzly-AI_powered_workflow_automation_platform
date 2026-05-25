@@ -33,7 +33,7 @@ function PromptInput() {
   };
 
   return (
-    <div className="PromptInput w-3xl flex items-center justify-center gap-4 p-4">
+    <div className="PromptInput w-2xl flex items-center justify-center gap-4 p-4">
         {/* <ToggleButton /> */}
         <div className="flex flex-col justify-between">
           <button
@@ -58,16 +58,16 @@ function PromptInput() {
             handleSubmit(e);
           }
         }} 
-        className="w-full flex items-center">
+        className="w-full flex items-center gap-2">
             <textarea
-                className="w-full min-h-15 p-2 rounded-lg bg-[#1f1f1f] text-white placeholder:text-gray-500 focus:outline-none resize-none"
+                className="w-full min-h-10 px-5 py-3 rounded-lg bg-[#1f1f1f] text-white placeholder:text-gray-500 focus:outline-none resize-none"
                 placeholder="Type your message..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
             />
             <button type="submit" 
-            className="p-4 bg-[#e2e2e2] text-black rounded-full hover:bg-gray-200 flex items-center justify-center cursor-pointer ml-2"
-            ><SendHorizontal /></button>
+            className="p-3 bg-[#e2e2e2] text-black rounded-full hover:bg-gray-200 flex items-center justify-center cursor-pointer"
+            ><SendHorizontal size={20}/></button>
         </form>
     </div>
   )

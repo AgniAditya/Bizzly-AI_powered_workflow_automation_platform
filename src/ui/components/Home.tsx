@@ -11,14 +11,23 @@ function Home() {
   return (
     <div className='Main w-full h-full flex flex-col items-center justify-between gap-5 py-10'>
       { messages.length === 0 ? (
+        <>
           <div className="StartConversation w-full h-full flex flex-col items-center justify-center">
-            <Logo />
-            <div className="StartConversation-text text-center text-gray-500">
-              Start the conversation by typing a message below!
+            <div>
+              <Logo />
+              <div className="StartConversation-text text-center text-gray-500 text-sm italic">
+                Start the conversation by typing a message below!
+              </div>
             </div>
+            <PromptInput />
           </div>
-        ) : <ConversationBox /> }
-      <PromptInput />
+        </>
+        ) : 
+        <>
+          <ConversationBox /> 
+          <PromptInput />
+        </>
+        }
     </div>
   )
 }
