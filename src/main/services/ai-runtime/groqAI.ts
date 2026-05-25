@@ -24,6 +24,8 @@ export class GroqAI {
     const chatCompletion = await groq.chat.completions.create({
       messages: formattedMessages,
       model: this.model,
+      max_completion_tokens: 2048,
+      temperature: 0.5,
     });
 
     const response: Message = {
